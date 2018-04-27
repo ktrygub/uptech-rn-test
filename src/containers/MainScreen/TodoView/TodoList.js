@@ -25,11 +25,6 @@ TodoList.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  //   flatListContainer: {
-  //     flexDirection: 'column',
-  //     justifyContent: 'flex-start',
-  //     alignItems: 'stretch',
-  //   },
   todoItem: {
     padding: 14,
     marginLeft: 4,

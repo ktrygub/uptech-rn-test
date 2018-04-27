@@ -1,11 +1,9 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import TodoList from './TodoList';
 import AddTodoInput from './AddTodoInput';
-import { getAllTodos, addTodo, toggleTodo, removeTodo } from '../../../store/modules/todos';
 
 class TodoView extends React.Component {
   onDoublePress = (id) => {
@@ -52,12 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => ({
-  todos: getAllTodos(state),
-});
-
-export default connect(mapStateToProps, {
-  addTodo,
-  toggleTodo,
-  removeTodo,
-})(TodoView);
+export default TodoView;

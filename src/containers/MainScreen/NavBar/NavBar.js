@@ -2,19 +2,33 @@ import React from 'react';
 import { View, Button, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-const NavBar = ({ onButtonClick }) => (
+const NavBar = ({ onTabButtonClick, uncompletedTodosCount, currentTemperature }) => (
   <View style={styles.container}>
     <View style={styles.buttonContainer}>
-      <Button onPress={() => onButtonClick('TODO_LIST')} title="Todo List" color="skyblue" />
+      <Button
+        onPress={() => onTabButtonClick('TODO_LIST')}
+        title={`Todo List ${uncompletedTodosCount ? `(${uncompletedTodosCount})` : ''}`}
+        color="skyblue"
+      />
     </View>
 
     <View style={styles.buttonContainer}>
-      <Button onPress={() => onButtonClick('WEATHER')} title="Weather" color="powderblue" />
+      <Button
+        onPress={() => onTabButtonClick('WEATHER')}
+        title={`Weather (${
+          currentTemperature.toFixed(0) < 0
+            ? currentTemperature.toFixed(0)
+            : `+${currentTemperature.toFixed(0)}`
+        }C)`}
+        color="powderblue"
+      />
     </View>
   </View>
 );
 NavBar.propTypes = {
-  onButtonClick: PropTypes.func.isRequired,
+  onTabButtonClick: PropTypes.func.isRequired,
+  uncompletedTodosCount: PropTypes.number.isRequired,
+  currentTemperature: PropTypes.number.isRequired,
 };
 
 const styles = StyleSheet.create({

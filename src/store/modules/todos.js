@@ -47,7 +47,7 @@ const todo = (state = {}, action) => {
   }
 };
 
-const reducer = (state = initialState, action) => {
+const todos = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
       return [...state, todo(undefined, action)];
@@ -60,7 +60,7 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default todos;
 
 /*
   Action creators
@@ -79,3 +79,6 @@ export const removeTodo = id => ({ type: REMOVE_TODO, id });
   Selectors
 */
 export const getAllTodos = state => state.todos;
+
+export const getUncompletedTodosCount = state =>
+  state.todos.reduce((acc, todo) => acc + (todo.isCompleted ? 0 : 1), 0);
